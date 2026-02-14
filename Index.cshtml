@@ -1,0 +1,196 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Feliz San Valentín ❤️";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Para Ashly 💖</title>
+
+    <style>
+
+        body{
+            margin:0;
+            padding:0;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #ff4e88, #ff8fb1);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            overflow:hidden;
+            color:white;
+            text-align:center;
+        }
+
+        .card{
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(15px);
+            padding:30px;
+            border-radius:25px;
+            width:90%;
+            max-width:400px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index:2;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h1{
+            font-size:26px;
+            margin-bottom:10px;
+        }
+
+        p{
+            font-size:17px;
+            line-height:1.5;
+        }
+
+        .heart-icon{
+            font-size:40px;
+            animation: beat 1s infinite;
+        }
+
+        button{
+            margin-top:20px;
+            padding:12px 25px;
+            border:none;
+            border-radius:20px;
+            font-size:16px;
+            background:white;
+            color:#ff4e88;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        button:hover{
+            background:#ffe6ef;
+        }
+
+        /* Corazones cayendo */
+        .falling-heart{
+            position: absolute;
+            top: -10px;
+            font-size: 20px;
+            animation: fall linear infinite;
+            z-index:1;
+        }
+
+        keyframes fall{
+            0%{
+                transform: translateY(-10px);
+                opacity:1;
+            }
+            100%{
+                transform: translateY(100vh);
+                opacity:0;
+            }
+        }
+
+        keyframes beat{
+            0%{transform: scale(1);}
+            50%{transform: scale(1.2);}
+            100%{transform: scale(1);}
+        }
+
+        keyframes fadeIn{
+            from{opacity:0; transform: translateY(20px);}
+            to{opacity:1; transform: translateY(0);}
+        }
+
+    </style>
+</head>
+
+<body>
+    <script>
+        const heartsContainer = document.querySelector('.hearts-layer');
+
+        function crearCorazon(){
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "💖";
+
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+            heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+
+            heartsContainer.appendChild(heart);
+
+            setTimeout(()=>{
+                heart.remove();
+            },7000);
+        }
+
+        setInterval(crearCorazon, 350);
+    </script>
+
+
+    <div class="card">
+        <div class="heart-icon">❤️</div>
+        <h1>Feliz San Valentín, Ashly 💕</h1>
+        <p>
+            Mi amor, desde que llegaste a mi vida todo es más bonito.
+            Tu sonrisa ilumina mis días y tu amor llena mi corazón.
+        </p>
+        <p>
+            Gracias por existir, por apoyarme y por hacerme tan feliz.
+            Prometo cuidarte, respetarte y amarte cada día más.
+        </p>
+        <button onclick="mostrarMensaje()">Presiona aquí 💌</button>
+        <p id="mensajeExtra" style="margin-top:15px; display:none;">
+            Eres mi persona favorita en el mundo 🌍💖
+            Te amo muchísimo, Mami estas muy rica.
+        </p>
+    </div>
+
+    <script>
+        function mostrarMensaje(){
+            document.getElementById("mensajeExtra").style.display="block";
+        }
+
+        // Crear corazones automáticamente
+        function crearCorazon(){
+            const heart = document.createElement("div");
+            heart.classList.add("falling-heart");
+            heart.innerHTML = "💖";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+            heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+            document.body.appendChild(heart);
+
+            setTimeout(()=>{
+                heart.remove();
+            },6000);
+        }
+
+        setInterval(crearCorazon, 300);
+    </script>
+    <script>
+        const heartsContainer = document.querySelector('.hearts-layer');
+
+        function crearCorazon(){
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "💖";
+
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+            heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+
+            heartsContainer.appendChild(heart);
+
+            setTimeout(()=>{
+                heart.remove();
+            },7000);
+        }
+
+        setInterval(crearCorazon, 350);
+    </script>
+
+
+</body>
+</html>
